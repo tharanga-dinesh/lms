@@ -6,7 +6,10 @@ import java.util.Date;
 import javax.persistence.Column;
 
 import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class BaseModel implements Serializable {
 
 	private static final long serialVersionUID = -2903288800744931463L;

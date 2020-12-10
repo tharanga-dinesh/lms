@@ -31,13 +31,13 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 		String userName = null; 
 		String jwtToken = null;
 		
-		if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
+		if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer_")) {
 			jwtToken = requestTokenHeader.substring(7);
 			
 			userName = jwtTokenUtil.getUsernameFromToken(jwtToken);
 			
 		} else {
-			logger.warn("JWT Token does not begin with Bearer String");
+			logger.warn("JWT Token does not begin with Bearer_ String");
 		}
 		
 		if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {

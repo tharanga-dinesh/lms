@@ -1,6 +1,7 @@
-package lk.bitwolfsolution.lms.configuration;
+package lk.bitwolfsolution.lms.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,7 +23,7 @@ import lk.bitwolfsolution.lms.security.jwt.JwtRequestFilter;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private JwtAuthenticationEnrtyPoint jwtAuthenticationEnrtyPoint;
@@ -31,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private JwtRequestFilter jwtRequestFilter;
 	
 	@Autowired
+	@Qualifier("jwtUserDetailService")
 	private UserDetailsService userDetailsService;
 	
 	@Autowired
